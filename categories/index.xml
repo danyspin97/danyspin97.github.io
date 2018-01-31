@@ -10,5 +10,14 @@
 	<atom:link href="https://danyspin97.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
     
     
+    <item>
+      <title>Termish</title>
+      <link>https://danyspin97.github.io/categories/termish/</link>
+      <pubDate>Wed, 31 Jan 2018 00:07:46 +0100</pubDate>
+      
+      <guid>https://danyspin97.github.io/categories/termish/</guid>
+      <description></description>
+    </item>
+    
   </channel>
 </rss>
