@@ -6,10 +6,21 @@
     <description>Recent content in Blogs on DanySpin97&#39;s site</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 31 Jan 2018 00:07:46 +0100</lastBuildDate>
+    <lastBuildDate>Mon, 05 Feb 2018 14:40:52 +0100</lastBuildDate>
     
 	<atom:link href="https://danyspin97.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Termish[0] = ncpamixer</title>
+      <link>https://danyspin97.github.io/blog/termish0_ncpamixer/</link>
+      <pubDate>Mon, 05 Feb 2018 14:40:52 +0100</pubDate>
+      
+      <guid>https://danyspin97.github.io/blog/termish0_ncpamixer/</guid>
+      <description>Welcome to the first post of Termish. Please, read what this is about here, if you haven&amp;rsquo;t already.
+Let&amp;rsquo;s talk about PulseAudio, a popular sound server that is widely used in Linux Desktop for its features out of the box. If you don&amp;rsquo;t know which your system audio service is, probably there is PulseAudio running (considering that even Firefox use it as default on Linux from version 52).
+How can we control audio input/output and raise volume?</description>
+    </item>
     
     <item>
       <title>Termish = malloc(255 * size)</title>
