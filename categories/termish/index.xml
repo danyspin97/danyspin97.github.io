@@ -6,10 +6,22 @@
     <description>Recent content in Termish on DanySpin97&#39;s site</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 05 Feb 2018 14:40:52 +0100</lastBuildDate>
+    <lastBuildDate>Sun, 25 Feb 2018 10:32:38 +0100</lastBuildDate>
     
 	<atom:link href="https://danyspin97.github.io/categories/termish/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Termish[1] = ddgr</title>
+      <link>https://danyspin97.github.io/blog/termish1_ddgr/</link>
+      <pubDate>Sun, 25 Feb 2018 10:32:38 +0100</pubDate>
+      
+      <guid>https://danyspin97.github.io/blog/termish1_ddgr/</guid>
+      <description>What is the most common thing we do each day? We browse the internet using a search engine, from Google to DuckDuckGo.
+But what&amp;rsquo;s the process?
+Open the browser, fire up the search and wait for results; then take the mouse and click on it, or if there is some vim-like plugin installed, press f and wait for popups.
+It is too long for something we do so often, isn&amp;rsquo;t it?</description>
+    </item>
     
     <item>
       <title>Termish[0] = ncpamixer</title>
