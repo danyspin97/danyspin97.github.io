@@ -6,10 +6,20 @@
     <description>Recent content in Blogs on DanySpin97&#39;s site</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 25 Feb 2018 10:32:38 +0100</lastBuildDate>
+    <lastBuildDate>Tue, 10 Apr 2018 15:30:18 +0200</lastBuildDate>
     
 	<atom:link href="https://danyspin97.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Termish[2] = yadm</title>
+      <link>https://danyspin97.github.io/blog/termish2_yadm/</link>
+      <pubDate>Tue, 10 Apr 2018 15:30:18 +0200</pubDate>
+      
+      <guid>https://danyspin97.github.io/blog/termish2_yadm/</guid>
+      <description>Dotfiles: the files whom dictate pretty much anything on your workstation, from vi[m] behavior to desktop customization. If you had never heard of dotfiles or you&amp;rsquo;re not familiar with their concept, this is a little explanation.
+But what if your laptop and data got lost? Rewrite everything from scratch would be a real hell: indeed they are usually stored on Github or whatever so that restoring or porting to a fresh install requires just 2 clicks.</description>
+    </item>
     
     <item>
       <title>Termish[1] = ddgr</title>
