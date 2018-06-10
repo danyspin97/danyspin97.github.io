@@ -13,20 +13,20 @@
     
     <item>
       <title>Termish[2] = yadm</title>
-      <link>https://danyspin97.github.io/blog/termish2_yadm/</link>
+      <link>https://danyspin97.github.io/blog/termish2--yadm/</link>
       <pubDate>Tue, 10 Apr 2018 15:30:18 +0200</pubDate>
       
-      <guid>https://danyspin97.github.io/blog/termish2_yadm/</guid>
+      <guid>https://danyspin97.github.io/blog/termish2--yadm/</guid>
       <description>Dotfiles: the files whom dictate pretty much anything on your workstation, from vi[m] behavior to desktop customization. If you had never heard of dotfiles or you&amp;rsquo;re not familiar with their concept, this is a little explanation.
 But what if your laptop and data got lost? Rewrite everything from scratch would be a real hell: indeed they are usually stored on Github or whatever so that restoring or porting to a fresh install requires just 2 clicks.</description>
     </item>
     
     <item>
       <title>Termish[1] = ddgr</title>
-      <link>https://danyspin97.github.io/blog/termish1_ddgr/</link>
+      <link>https://danyspin97.github.io/blog/termish1--ddgr/</link>
       <pubDate>Sun, 25 Feb 2018 10:32:38 +0100</pubDate>
       
-      <guid>https://danyspin97.github.io/blog/termish1_ddgr/</guid>
+      <guid>https://danyspin97.github.io/blog/termish1--ddgr/</guid>
       <description>What is the most common thing we do each day? We browse the internet using a search engine, from Google to DuckDuckGo.
 But what&amp;rsquo;s the process?
 Open the browser, fire up the search and wait for results; then take the mouse and click on it, or if there is some vim-like plugin installed, press f and wait for popups.
@@ -35,10 +35,10 @@ It is too long for something we do so often, isn&amp;rsquo;t it?</description>
     
     <item>
       <title>Termish[0] = ncpamixer</title>
-      <link>https://danyspin97.github.io/blog/termish0_ncpamixer/</link>
+      <link>https://danyspin97.github.io/blog/termish0--ncpamixer/</link>
       <pubDate>Mon, 05 Feb 2018 14:40:52 +0100</pubDate>
       
-      <guid>https://danyspin97.github.io/blog/termish0_ncpamixer/</guid>
+      <guid>https://danyspin97.github.io/blog/termish0--ncpamixer/</guid>
       <description>Welcome to the first post of Termish. Please, read what this is about here, if you haven&amp;rsquo;t already.
 Let&amp;rsquo;s talk about PulseAudio, a popular sound server that is widely used in Linux Desktop for its features out of the box. If you don&amp;rsquo;t know which your system audio service is, probably there is PulseAudio running (considering that even Firefox use it as default on Linux from version 52).
 How can we control audio input/output and raise volume?</description>
@@ -46,10 +46,10 @@ How can we control audio input/output and raise volume?</description>
     
     <item>
       <title>Termish = malloc(255 * size)</title>
-      <link>https://danyspin97.github.io/blog/termish_malloc/</link>
+      <link>https://danyspin97.github.io/blog/termish--malloc255--size/</link>
       <pubDate>Wed, 31 Jan 2018 00:07:46 +0100</pubDate>
       
-      <guid>https://danyspin97.github.io/blog/termish_malloc/</guid>
+      <guid>https://danyspin97.github.io/blog/termish--malloc255--size/</guid>
       <description>This is the preface for a series of post on terminal apps, called Termish.
 But why?
 I love staying in the terminal. A lot of things are faster to do and I don&amp;rsquo;t have to move my hands away from keyboard every now and then.

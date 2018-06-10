@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="chrome=1">
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="referrer" content="no-referrer">
+<meta name="author" content="Danilo Spinella">
+<meta name="description" content="Welcome to the first post of Termish. Please, read what this is about here, if you haven&rsquo;t already.
+Let&rsquo;s talk about PulseAudio, a popular sound server that is widely used in Linux Desktop for its features out of the box. If you don&rsquo;t know which your system audio service is, probably there is PulseAudio running (considering that even Firefox use it as default on Linux from version 52).
+How can we control audio input/output and raise volume?">
+
+<meta property="og:title" content="Termish[0] = ncpamixer" />
+<meta property="og:description" content="Welcome to the first post of Termish. Please, read what this is about here, if you haven&rsquo;t already.
+Let&rsquo;s talk about PulseAudio, a popular sound server that is widely used in Linux Desktop for its features out of the box. If you don&rsquo;t know which your system audio service is, probably there is PulseAudio running (considering that even Firefox use it as default on Linux from version 52).
+How can we control audio input/output and raise volume?" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://danyspin97.github.io/blog/termish0--ncpamixer/" />
+
+
+
+<meta property="article:published_time" content="2018-02-05T14:40:52&#43;01:00"/>
+
+<meta property="article:modified_time" content="2018-02-05T14:40:52&#43;01:00"/>
+
+
+
+
+
+
+
+
+
+
+
+
+<title>
+
+
+     Termish[0] = ncpamixer 
+
+</title>
+<link rel="canonical" href="https://danyspin97.github.io/blog/termish0--ncpamixer/">
+
+
+
+
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/styles/default.min.css">
+
+
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Ubuntu+Mono:400,400i,700,700i|Raleway:500">
+
+
+
+    
+    <link rel="stylesheet" href="/css/reset.css?t=2018-06-10%2017%3a57%3a33.902980562%20%2b0200%20CEST%20m%3d%2b0.030053520">
+    <link rel="stylesheet" href="/css/pygments.css?t=2018-06-10%2017%3a57%3a33.902980562%20%2b0200%20CEST%20m%3d%2b0.030053520">
+    <link rel="stylesheet" href="/css/main.css?t=2018-06-10%2017%3a57%3a33.902980562%20%2b0200%20CEST%20m%3d%2b0.030053520">
+    
+
+
+
+
+<link rel="shortcut icon"
+
+    href="/img/favicon.ico"
+
+>
+
+
+
+
+
+
+
+
+</head>
+
+
+<body lang="">
+
+<section class="header">
+    <div class="container">
+        <div class="content">
+            
+            <a href="/"><div class="name">Danilo Spinella</div></a>
+            
+              <h3 class="self-intro">OpenSource contributor</h3>
+            
+            <nav>
+                <ul>
+                    
+                        <li class="nav-blog"><a href="https://danyspin97.github.io/blog/"><span>blog</span></a></li>
+                    
+                        <li class="nav-"><a href="https://danyspin97.github.io/projects/"><span>projects</span></a></li>
+                    
+                </ul>
+            </nav>
+        </div>
+    </div>
+</section>
+
+<section class="icons">
+    <div class="container">
+        <div class="content">
+        
+            <a href="//github.com/DanySpin97" target="_blank" rel="noopener"><img class="icon" src="/img/github.svg" alt="github" /></a>
+        
+
+        
+
+	
+
+        
+
+        
+            <a href="//fosstodon.org/@danyspin97" target="_blank" rel="noopener"><img class="icon" src="/img/mastodon.svg" alt="mastodon" /></a>
+        
+
+        
+            <a href="//linkedin.com/DanySpin97" target="_blank" rel="noopener"><img class="icon" src="/img/linkedin.svg" alt="linkedin" /></a>
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+            <a href="mailto:danyspin97@protonmail.com"><img class="icon" src="/img/email.svg" alt="email" /></a>
+        
+
+        
+
+        
+        </div>
+    </div>
+</section>
+
+
+<section class="main post non-narrow zero-top-spacing">
+    <div class="container">
+        <div class="content">
+            <div class="front-matter">
+                <div class="title-container">
+                    <div class="page-heading">
+
+    Termish[0] = ncpamixer
+
+</div>
+
+                    <div class="initials"><a href="https://danyspin97.github.io/"></a></div>
+                </div>
+                <div class="meta">
+                    
+                    <div class="date" title='Mon Feb 5 2018 14:40:52 CET'>Feb 5, 2018</div>
+                    
+                    
+		    <div class="reading-time"><div class="middot"></div>2 minutes read</div>
+                    
+                </div>
+            </div>
+            <div class="markdown">
+                
+
+<p>Welcome to the first post of <em>Termish</em>. Please, read what this is about
+<a href="/blog/termish_malloc/">here</a>, if you haven&rsquo;t already.</p>
+
+<p>Let&rsquo;s talk about <em>PulseAudio</em>, a popular sound server that is widely used in
+Linux Desktop for its features out of the box. If you don&rsquo;t know which your
+system audio service is, probably there is PulseAudio running (considering
+that even Firefox use it as default on Linux from version <a href="https://www.bleepingcomputer.com/news/software/some-firefox-52-users-on-linux-left-without-sound/">52</a>).</p>
+
+<p>How can we control audio input/output and raise volume? There is a graphical
+interface, <em>pavucontrol</em>, which accomplish those easily.</p>
+
+<p><br/></p>
+
+<p><img src="/img/pavucontrol.png" alt="pavucontrol" /></p>
+
+<p><br/></p>
+
+<p>Is there a lightweight alternative to pavucontrol? Something like <a href="https://en.wikipedia.org/wiki/Alsamixer">alsamixer</a>
+to use from our beloved terminal? Well, yes; its name is <em><a href="https://github.com/fulhax/ncpamixer">ncpamixer</a></em>.</p>
+
+<p>ncpamixer, which stands for <em>ncurses PulseAudio Mixer</em>, offers basic
+PulseAudio server control from a terminal interface; even more, there is a
+customizable shortcut for anything.</p>
+
+<p><br/></p>
+
+<p><img src="/img/ncpamixer.gif" alt="ncpamixer" /></p>
+
+<p><br/></p>
+
+<p>At a first glance it really seems to use pavucontrol from the terminal, in
+fact the README says:</p>
+
+<blockquote>
+<p>An ncurses mixer for PulseAudio inspired by pavucontrol.</p>
+</blockquote>
+
+<h1 id="features">Features</h1>
+
+<p><em>ncpamixer</em> implements the following features:</p>
+
+<ul>
+<li><em>per</em> application volume changing</li>
+<li>devices monitoring and configuration</li>
+<li>granular input and output control</li>
+</ul>
+
+<p>However, it cannot do (but <em>pavucontrol</em> can):</p>
+
+<ul>
+<li>change latency offset</li>
+<li>do any advanced configuration</li>
+<li>filter applications by category</li>
+</ul>
+
+<h1 id="installation">Installation</h1>
+
+<p>If you want to give it a try, <a href="https://github.com/fulhax/ncpamixer#install">these</a> are the installation instructions.</p>
+
+<h1 id="conclusion">Conclusion</h1>
+
+<p><em>ncpamixer</em> is not a drop-in replacement for its GTK+ counterpart, but it&rsquo;s
+suitable for everyday usage: it is perfect to use along with a window manager
+and a shortcut assigned (I personally use super+p).</p>
+
+<h1 id="related-links">Related links</h1>
+
+<ul>
+<li><a href="https://github.com/fulhax/ncpamixer">ncpamixer</a></li>
+<li><a href="(https://www.reddit.com/r/commandline/comments/7vey2x/termish0_ncpamixer/?ref=share&amp;ref_source=link)">/r/commandline thread</a></li>
+<li><a href="https://freedesktop.org/software/pulseaudio/pavucontrol/">pavucontrol</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Alsamixer">alsamixer</a></li>
+</ul>
+
+                <br>
+                
+                  <div class="tags">
+                    <strong>Tags:</strong>
+                  
+                    <a href="/tags/terminal">terminal</a>
+                  
+                    <a href="/tags/pulseaudio">pulseaudio</a>
+                  
+                    <a href="/tags/pavucontrol">pavucontrol</a>
+                  
+                  </div>
+                  <br />
+                
+                <p class="back-to-posts"><a href="/blog/">Back to posts</a></p>
+            </div>
+            <br>
+            <div class="disqus">
+                
+            </div>
+            
+        </div>
+    </div>
+</section>
+
+
+
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/highlight.min.js"></script>
+  
+
+  <script type="text/javascript">
+    hljs.initHighlightingOnLoad();
+  </script>
+
+
+
+
+
+</body>
+</html>
+

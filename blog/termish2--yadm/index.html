@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="chrome=1">
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="referrer" content="no-referrer">
+<meta name="author" content="Danilo Spinella">
+<meta name="description" content="Dotfiles: the files whom dictate pretty much anything on your workstation, from vi[m] behavior to desktop customization. If you had never heard of dotfiles or you&rsquo;re not familiar with their concept, this is a little explanation.
+But what if your laptop and data got lost? Rewrite everything from scratch would be a real hell: indeed they are usually stored on Github or whatever so that restoring or porting to a fresh install requires just 2 clicks.">
+
+<meta property="og:title" content="Termish[2] = yadm" />
+<meta property="og:description" content="Dotfiles: the files whom dictate pretty much anything on your workstation, from vi[m] behavior to desktop customization. If you had never heard of dotfiles or you&rsquo;re not familiar with their concept, this is a little explanation.
+But what if your laptop and data got lost? Rewrite everything from scratch would be a real hell: indeed they are usually stored on Github or whatever so that restoring or porting to a fresh install requires just 2 clicks." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://danyspin97.github.io/blog/termish2--yadm/" />
+
+
+
+<meta property="article:published_time" content="2018-04-10T15:30:18&#43;02:00"/>
+
+<meta property="article:modified_time" content="2018-04-10T15:30:18&#43;02:00"/>
+
+
+
+
+
+
+
+
+
+
+
+
+<title>
+
+
+     Termish[2] = yadm 
+
+</title>
+<link rel="canonical" href="https://danyspin97.github.io/blog/termish2--yadm/">
+
+
+
+
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/styles/default.min.css">
+
+
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Ubuntu+Mono:400,400i,700,700i|Raleway:500">
+
+
+
+    
+    <link rel="stylesheet" href="/css/reset.css?t=2018-06-10%2017%3a57%3a33.902836908%20%2b0200%20CEST%20m%3d%2b0.029909875">
+    <link rel="stylesheet" href="/css/pygments.css?t=2018-06-10%2017%3a57%3a33.902836908%20%2b0200%20CEST%20m%3d%2b0.029909875">
+    <link rel="stylesheet" href="/css/main.css?t=2018-06-10%2017%3a57%3a33.902836908%20%2b0200%20CEST%20m%3d%2b0.029909875">
+    
+
+
+
+
+<link rel="shortcut icon"
+
+    href="/img/favicon.ico"
+
+>
+
+
+
+
+
+
+
+
+</head>
+
+
+<body lang="">
+
+<section class="header">
+    <div class="container">
+        <div class="content">
+            
+            <a href="/"><div class="name">Danilo Spinella</div></a>
+            
+              <h3 class="self-intro">OpenSource contributor</h3>
+            
+            <nav>
+                <ul>
+                    
+                        <li class="nav-blog"><a href="https://danyspin97.github.io/blog/"><span>blog</span></a></li>
+                    
+                        <li class="nav-"><a href="https://danyspin97.github.io/projects/"><span>projects</span></a></li>
+                    
+                </ul>
+            </nav>
+        </div>
+    </div>
+</section>
+
+<section class="icons">
+    <div class="container">
+        <div class="content">
+        
+            <a href="//github.com/DanySpin97" target="_blank" rel="noopener"><img class="icon" src="/img/github.svg" alt="github" /></a>
+        
+
+        
+
+	
+
+        
+
+        
+            <a href="//fosstodon.org/@danyspin97" target="_blank" rel="noopener"><img class="icon" src="/img/mastodon.svg" alt="mastodon" /></a>
+        
+
+        
+            <a href="//linkedin.com/DanySpin97" target="_blank" rel="noopener"><img class="icon" src="/img/linkedin.svg" alt="linkedin" /></a>
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+            <a href="mailto:danyspin97@protonmail.com"><img class="icon" src="/img/email.svg" alt="email" /></a>
+        
+
+        
+
+        
+        </div>
+    </div>
+</section>
+
+
+<section class="main post non-narrow zero-top-spacing">
+    <div class="container">
+        <div class="content">
+            <div class="front-matter">
+                <div class="title-container">
+                    <div class="page-heading">
+
+    Termish[2] = yadm
+
+</div>
+
+                    <div class="initials"><a href="https://danyspin97.github.io/"></a></div>
+                </div>
+                <div class="meta">
+                    
+                    <div class="date" title='Tue Apr 10 2018 15:30:18 CEST'>Apr 10, 2018</div>
+                    
+                    
+		    <div class="reading-time"><div class="middot"></div>3 minutes read</div>
+                    
+                </div>
+            </div>
+            <div class="markdown">
+                
+
+<p><em>Dotfiles</em>: the files whom dictate pretty much anything on your workstation,
+from vi[m] behavior to desktop customization. If you had never heard of
+dotfiles or you&rsquo;re not familiar with their concept,
+<a href="https://askubuntu.com/questions/94780/what-are-dot-files">this</a> is a little explanation.</p>
+
+<p>But what if your laptop and data got lost? Rewrite everything from scratch would be a real hell: indeed they are usually stored on Github or whatever so that restoring or porting to a fresh install requires just 2 clicks.</p>
+
+<p>It seems simple, doesn&rsquo;t it? Well, it is. And simple problems can be resolved in a dozen of different ways. Dotfiles make no difference: people have distinct way to manage configuration files (<a href="https://dotfiles.github.com/index.html#general-purpose-dotfile-utilities">this</a> is only a glance) and use from symlinks to rsync and everything in between.</p>
+
+<h1 id="yet-another-dotfiles-manager">Yet Another Dotfiles Manager</h1>
+
+<p>Yadm is a simple program: there are no symlinks and it doesn&rsquo;t use rsync either. It just clone your repository into your home and let you use git commands to manage it. Yea, you can commit, merge and whatever from yadm.</p>
+
+<h1 id="how-it-works">How it works</h1>
+
+<script src="https://asciinema.org/a/168409.js" id="asciicast-168409" async></script>
+
+<p>At the first call you can either clone the remote repository or init a new one, then you can use all git commands, from commit to rebase.</p>
+
+<pre><code class="language-bash">yadm init
+yadm add &lt;your dotfiles&gt;
+yadm commit
+</code></pre>
+
+<p>Adding a remote repository and pushing to it its trivial, so I&rsquo;ll skip it (you can find more in the <a href="https://thelocehiliosan.github.io/yadm/docs/getting_started">getting started</a> of the official documentation).
+Instead, let&rsquo;s focus on specific features of yadm, like encryption and alternate files.</p>
+
+<h2 id="encryption"><a href="https://thelocehiliosan.github.io/yadm/docs/encryption">Encryption</a></h2>
+
+<p>Both symmetric and asymmetric encryption can be used, with symmetric as default. It is a pretty simple method, with all files encrypted together, and it&rsquo;s perfect for sensible data like ssh or OpenGPG keys. However, pushing sensible data to a public repository, even if encrypted, is <em>discouraged</em>.</p>
+
+<h2 id="alternate-files"><a href="https://thelocehiliosan.github.io/yadm/docs/alternates">Alternate files</a></h2>
+
+<p>Alternate files are a powerful way to have the same dotfiles in different computers that may run different Os or need only a different <code>.bashrc</code>. You can use up to 4 different matches (<em>CLASS</em>, <em>OS</em>, <em>HOSTNAME</em>, <em>USER</em>) to differentiate your files.</p>
+
+<h2 id="bootstrap"><a href="https://thelocehiliosan.github.io/yadm/docs/bootstrap">Bootstrap</a></h2>
+
+<p>You are installing dotfiles but you also want to install all vim plugins so you don&rsquo;t have to do it manually? Bootstrap is the perfect tool for the job. It will execute commands right after the dotfiles repositories has been cloned.</p>
+
+<h1 id="features">Features</h1>
+
+<ul>
+<li>No symlinks</li>
+<li>Few dependencies</li>
+<li>Alternate files between hosts</li>
+<li>Encryption</li>
+<li>Use git internally</li>
+</ul>
+
+<h1 id="installation">Installation</h1>
+
+<p><a href="https://thelocehiliosan.github.io/yadm/">yadm</a> is available in almost every distro.</p>
+
+<h1 id="conclusion">Conclusion</h1>
+
+<p><a href="https://thelocehiliosan.github.io/yadm/">yadm</a> is a reliable program that will manage your dotfiles with as little effort as possible, both if you&rsquo;re an advanced user or a novice. Its commands are the same as git, which mean you don&rsquo;t need to learn everything new. Its encrypt, alternate and boostrap features make it flexible and powerful. If you need a tool to manage dotfiles, this is definitely the best.</p>
+
+                <br>
+                
+                  <div class="tags">
+                    <strong>Tags:</strong>
+                  
+                    <a href="/tags/dotfiles">dotfiles</a>
+                  
+                    <a href="/tags/terminal">terminal</a>
+                  
+                  </div>
+                  <br />
+                
+                <p class="back-to-posts"><a href="/blog/">Back to posts</a></p>
+            </div>
+            <br>
+            <div class="disqus">
+                
+            </div>
+            
+        </div>
+    </div>
+</section>
+
+
+
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/highlight.min.js"></script>
+  
+
+  <script type="text/javascript">
+    hljs.initHighlightingOnLoad();
+  </script>
+
+
+
+
+
+</body>
+</html>
+

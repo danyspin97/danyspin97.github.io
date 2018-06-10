@@ -13,10 +13,10 @@
     
     <item>
       <title>Termish[0] = ncpamixer</title>
-      <link>https://danyspin97.github.io/blog/termish0_ncpamixer/</link>
+      <link>https://danyspin97.github.io/blog/termish0--ncpamixer/</link>
       <pubDate>Mon, 05 Feb 2018 14:40:52 +0100</pubDate>
       
-      <guid>https://danyspin97.github.io/blog/termish0_ncpamixer/</guid>
+      <guid>https://danyspin97.github.io/blog/termish0--ncpamixer/</guid>
       <description>Welcome to the first post of Termish. Please, read what this is about here, if you haven&amp;rsquo;t already.
 Let&amp;rsquo;s talk about PulseAudio, a popular sound server that is widely used in Linux Desktop for its features out of the box. If you don&amp;rsquo;t know which your system audio service is, probably there is PulseAudio running (considering that even Firefox use it as default on Linux from version 52).
 How can we control audio input/output and raise volume?</description>
